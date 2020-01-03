@@ -30,6 +30,7 @@ class JobAdapter internal constructor(context:Context):RecyclerView.Adapter<JobA
         holder.textViewJobTitle.text = job.jobTitle
         holder.textViewSalary.text = ""+job.minSalary + " - " + job.maxSalary
     }
+
     inner class JobViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         val imageViewCompanyLogo:ImageView = itemView.findViewById(R.id.imageViewCompanyLogo)
         val textViewCompanyName:TextView = itemView.findViewById(R.id.textViewCompanyName)
