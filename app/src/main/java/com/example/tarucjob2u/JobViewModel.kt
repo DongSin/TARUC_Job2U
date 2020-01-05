@@ -14,10 +14,10 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
 
 
     init {
-        var job1 = Job(0,0,"TARUC","Cleaner",1000,1500)
-        var job2 = Job(1,0,"KFC","Cashier",1200,2000)
-        var job3 = Job(2,0,"MCD","Drive Thru",1500,2300)
-        var job4 = Job(3,0,"Huawei","Store Manager",2500,3000)
+        var job1 = Job(0,"TARUC","Cleaner",1000,1500)
+        var job2 = Job(1,"KFC","Cashier",1200,2000)
+        var job3 = Job(2,"MCD","Drive Thru",1500,2300)
+        var job4 = Job(3,"Huawei","Store Manager",2500,3000)
 
         var list = listOf(job1,job2,job3,job4)
 

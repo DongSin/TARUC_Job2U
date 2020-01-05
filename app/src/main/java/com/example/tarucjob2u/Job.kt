@@ -1,13 +1,13 @@
 package com.example.tarucjob2u
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+//import androidx.room.Entity
+//import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "Job")
+//@Entity(tableName = "Job")
 data class Job (
-    @PrimaryKey(autoGenerate = true) val id:Int,
-    val companyId:Int,
+//    @PrimaryKey(autoGenerate = true)
+    val id:Int,
     val companyName:String,
     var jobTitle:String,
     var minSalary:Int,
