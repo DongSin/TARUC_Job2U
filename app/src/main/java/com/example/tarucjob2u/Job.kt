@@ -12,7 +12,9 @@ class Job (
     var minSalary:Int,
     var maxSalary:Int,
     var requirement:String,
-    var tags:List<String>
+    var tags:List<String>,
+    val date_create: Long =  System.currentTimeMillis(),
+    val imageUrl:String = ""
 ){
 
     constructor():this("","","",0,0,"", listOf()){

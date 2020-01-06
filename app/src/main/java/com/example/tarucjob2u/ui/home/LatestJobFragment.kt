@@ -39,6 +39,7 @@ class LatestJobFragment:Fragment() {
         jobViewModel.jobList.observe(viewLifecycleOwner,
             Observer {
                 if(it.isNotEmpty()){
+
                     adapter.setJobList(it)
                 }
             })
