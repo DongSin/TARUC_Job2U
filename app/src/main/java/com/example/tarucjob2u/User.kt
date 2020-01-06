@@ -1,7 +1,7 @@
 package com.example.tarucjob2u
 
-data class User(
-    val id:Int,
+class User(
+    val id:String,
     var name:String,
     var email:String,
     val password:String,

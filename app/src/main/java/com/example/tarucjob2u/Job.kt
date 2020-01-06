@@ -4,20 +4,27 @@ package com.example.tarucjob2u
 //import androidx.room.PrimaryKey
 
 
-//@Entity(tableName = "Job")
-data class Job (
-//    @PrimaryKey(autoGenerate = true)
-    val id:Int,
+
+class Job (
+    val id:String,
     val companyName:String,
     var jobTitle:String,
     var minSalary:Int,
-    var maxSalary:Int
+    var maxSalary:Int,
+    var requirement:String,
+    var tags:List<String>
 ){
 
-    fun setDetails(jobTitle: String,minSalary: Int,maxSalary: Int){
+    constructor():this("","","",0,0,"", listOf()){
+
+    }
+
+    fun setDetails(jobTitle: String,minSalary: Int,maxSalary: Int, requirement: String,tags: List<String>){
         this.jobTitle = jobTitle
         this.minSalary = minSalary
         this.maxSalary = maxSalary
+        this.requirement = requirement
+        this.tags = tags
     }
 
 }

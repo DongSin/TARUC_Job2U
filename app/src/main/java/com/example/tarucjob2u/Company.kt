@@ -1,7 +1,7 @@
 package com.example.tarucjob2u
 
-data class Company(
-    val id:Int,
+class Company(
+    val id:String,
     var name:String,
     var address:String,
     var description:String,
