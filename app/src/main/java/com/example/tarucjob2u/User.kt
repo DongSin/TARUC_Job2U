@@ -11,7 +11,7 @@ class User(
     var language:List<String>,
     var interest:List<String>,
     var profession:String,
-    val imageUri: Uri
+    val imageUri: String
 ) {
     fun setDetails(name: String,email: String,interest: List<String>,profession: String,language: List<String>){
         this.name = name

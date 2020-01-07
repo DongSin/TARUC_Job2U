@@ -35,7 +35,7 @@ import kotlin.math.log
 //import androidx.lifecycle.viewModelScope
 //import kotlinx.coroutines.launch
 
-class JobViewModel(application: Application):AndroidViewModel(application) {
+class JobViewModel(application: Application) : AndroidViewModel(application) {
 
     //private val repository: JobRepository
     val jobList: MutableLiveData<List<Job>> = MutableLiveData()
@@ -45,15 +45,8 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
 
     init {
 
-
-
-
         // create test data
         //createTest()
-
-
-
-
         val list = mutableListOf<Job>()
 
         jobRef.addValueEventListener(object : ValueEventListener {
@@ -62,27 +55,19 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
                 // whenever data at this location is updated.
 
 
-                if(dataSnapshot.exists()) {
+                if (dataSnapshot.exists()) {
                     for (i: DataSnapshot in dataSnapshot.children) {
 
                         val job = i.getValue(Job::class.java)
                         list.add(job!!)
                     }
-
-
                 }
-
                 jobList.value = list
-
             }
-
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
-
             }
         })
-
-
     }
 
     private fun createTest() {
@@ -90,12 +75,23 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
         val id = jobRef.push().key as String
         val uri = Uri.parse("file:///storage/emulated/0/DCIM/Camera/IMG_20200106_154334.jpg")
         storageRef.child("extra.jpeg")
-        val downloadUri = uploadImage(id,uri)
-        val tags = listOf("Software","Mobile","Fast Food","International")
-        if(downloadUri != null){
+        val downloadUri = uploadImage(id, uri)
+        val tags = listOf("Software", "Mobile", "Fast Food", "International")
+        if (downloadUri != null) {
 
-            val job = Job(id,"MCD","Mobile Developer",3400,4000,"Male", "3 years of experience, willing to work overtime, high tolerant toward pressure", tags,System.currentTimeMillis(),
-                listOf("English","Malay"),downloadUri)
+            val job = Job(
+                id,
+                "MCD",
+                "Mobile Developer",
+                3400,
+                4000,
+                "Male",
+                "3 years of experience, willing to work overtime, high tolerant toward pressure",
+                tags,
+                System.currentTimeMillis(),
+                listOf("English", "Malay"),
+                downloadUri
+            )
             jobRef.child(id).setValue(job).addOnCompleteListener {
                 Log.d("Debug", "job saved")
 
@@ -103,19 +99,18 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
         }
     }
 
-    private fun uploadImage(id: String,uri:Uri):String {
+    private fun uploadImage(id: String, uri: Uri): String {
 
         var downloadUri = ""
-        if (uri != null){
-            val fileRef:StorageReference = storageRef.child("$id.jpg")
+        if (uri != null) {
+            val fileRef: StorageReference = storageRef.child("$id.jpg")
             fileRef.putFile(uri).addOnSuccessListener {
-                Log.d("debug","upload image done")
+                Log.d("debug", "upload image done")
                 downloadUri = it.metadata!!.reference!!.downloadUrl.toString()
-            }.addOnFailureListener{
-                Log.d("debug","upload failed:" + it.message)
+            }.addOnFailureListener {
+                Log.d("debug", "upload failed:" + it.message)
 
             }
-
         }
         return downloadUri
     }

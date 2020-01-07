@@ -17,7 +17,7 @@ class RegisterCompanyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_company)
 
-        imageViewImageUpload.setOnClickListener {
+        imageViewImageUploadCompany.setOnClickListener {
             it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
             openFileChooser()
         }
@@ -48,7 +48,7 @@ class RegisterCompanyActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null){
             imageUri = data.data!!
-            Picasso.with(this).load(imageUri).into(imageViewImageUpload)
+            Picasso.with(this).load(imageUri).into(imageViewImageUploadCompany)
         }
     }
 

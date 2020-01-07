@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/ConstraintLayoutRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewChooseImage"
+                android:id="@+id/textViewChooseImageCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -29,7 +29,7 @@
                 tools:layout_conversion_absoluteWidth="97dp" />
 
             <ImageView
-                android:id="@+id/imageViewImageUpload"
+                android:id="@+id/imageViewImageUploadCompany"
                 android:layout_width="150sp"
                 android:layout_height="150sp"
                 android:clickable="true"
@@ -38,7 +38,7 @@
                 tools:layout_conversion_absoluteWidth="150dp" />
 
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextNameCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -48,7 +48,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextPasswordCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -58,28 +58,28 @@
                 android:inputType="textPassword" />
 
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextEmailCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
                 android:hint="@string/enter_email"
-                android:inputType="textPersonName"/>
+                android:inputType="textEmailAddress"/>
 
             <EditText
-                android:id="@+id/editTextPhone"
+                android:id="@+id/editTextPhoneCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
                 android:hint="@string/enter_phone"
-                android:inputType="textPersonName" />
+                android:inputType="textPhonetic" />
 
 
             <EditText
-                android:id="@+id/editTextAddress"
+                android:id="@+id/editTextAddressCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -89,7 +89,7 @@
                 android:inputType="textMultiLine" />
 
             <EditText
-                android:id="@+id/editTextDescription"
+                android:id="@+id/editTextDescriptionCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -99,7 +99,7 @@
                 android:inputType="textMultiLine" />
 
             <Button
-                android:id="@+id/buttonRegister"
+                android:id="@+id/buttonRegisterCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
