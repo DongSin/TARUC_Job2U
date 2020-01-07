@@ -48,8 +48,8 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
 
 
 
-
-        createTest()
+        // create test data
+        //createTest()
 
 
 
@@ -91,10 +91,10 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
         val uri = Uri.parse("file:///storage/emulated/0/DCIM/Camera/IMG_20200106_154334.jpg")
         storageRef.child("extra.jpeg")
         val downloadUri = uploadImage(id,uri)
-        val tags = listOf("Cashier","Fast Food")
+        val tags = listOf("Software","Mobile","Fast Food","International")
         if(downloadUri != null){
 
-            val job = Job(id,"KFC","Cashier",1000,2000, "no requirement",  tags,System.currentTimeMillis(),downloadUri)
+            val job = Job(id,"MCD","Mobile Developer",3400,4000,"Male", "3 years of experience, willing to work overtime, high tolerant toward pressure", tags,System.currentTimeMillis(),downloadUri)
             jobRef.child(id).setValue(job).addOnCompleteListener {
                 Log.d("Debug", "job saved")
 

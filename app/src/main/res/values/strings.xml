@@ -14,4 +14,11 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="salary_range">Salary Range</string>
+    <string name="company_name">Company</string>
+    <string name="job_title">Job Position</string>
+    <string name="gender">Gender</string>
+    <string name="requirement">Requirement</string>
+    <string name="post_date">Post Date</string>
+    <string name="tags">Tags</string>
 </resources>

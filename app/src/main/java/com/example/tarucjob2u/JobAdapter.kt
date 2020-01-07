@@ -1,11 +1,13 @@
 package com.example.tarucjob2u
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -18,8 +20,11 @@ class JobAdapter internal constructor(context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
         val itemView = inflater.inflate(R.layout.job_record, parent, false)
+
         return JobViewHolder(itemView)
     }
+
+
 
     override fun getItemCount(): Int {
         return jobList.size
@@ -39,6 +44,13 @@ class JobAdapter internal constructor(context: Context) :
         holder.textViewCompanyName.text = job.companyName
         holder.textViewJobTitle.text = job.jobTitle
         holder.textViewSalary.text = "RM" + job.minSalary + " - RM" + job.maxSalary
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(mContext,JobDetailActivity::class.java)
+            intent.putExtra("job",job)
+
+            mContext.startActivity(intent)
+        }
     }
 
     inner class JobViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

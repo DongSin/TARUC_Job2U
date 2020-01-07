@@ -5,6 +5,7 @@ class User(
     var name:String,
     var email:String,
     val password:String,
+    val gender:String,
     var interest:List<String>,
     var profession:String
 ) {
