@@ -7,36 +7,34 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_register_company.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterCompanyActivity : AppCompatActivity() {
 
     private lateinit var imageUri:Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_register_company)
 
         imageViewImageUpload.setOnClickListener {
             it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
             openFileChooser()
         }
 
-        textViewGoLoginFromCompany.setOnClickListener{
+        textViewGoLoginFromCompany.setOnClickListener {
             it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
             val intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
         }
+
         textViewGoRegisterUserFromCompany.setOnClickListener {
             it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
-            val intent = Intent(this,RegisterCompanyActivity::class.java)
+            val intent = Intent(this,RegisterActivity::class.java)
             startActivity(intent)
         }
 
-        buttonRegister.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
-            //todo add user
-        }
+
     }
 
     private fun openFileChooser() {

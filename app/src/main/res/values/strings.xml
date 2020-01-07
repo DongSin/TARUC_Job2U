@@ -43,4 +43,18 @@
     <string name="go_to_login">Go To Login</string>
     <string name="go_to_register_company">Go To Register Company</string>
     <string name="title_register">Register User</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="language">Language</string>
+    <string name="login">Login</string>
+    <string name="register_company">Register Company</string>
+    <string name="english">English</string>
+    <string name="chinese">Chinese</string>
+    <string name="malay">Malay</string>
+    <string name="tamil">Tamil</string>
+    <string name="login_user">Login User</string>
+    <string name="login_company">Login Company</string>
+    <string name="go_to_register_user">Go To Register User</string>
+    <string name="enter_phone">Enter Phone</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_description">Enter Description</string>
 </resources>
