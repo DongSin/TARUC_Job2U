@@ -18,6 +18,7 @@ class Job(
     var requirement:String,
     var tags:List<String>,
     val date_create: Long =  System.currentTimeMillis(),
+    var language:List<String>,
     val imageUrl:String = ""
 ):Parcelable{
 
@@ -32,21 +33,23 @@ class Job(
         parcel.readString()!!,
         parcel.createStringArrayList()!!,
         parcel.readLong(),
+        parcel.createStringArrayList()!!,
         parcel.readString()!!
     ) {
     }
 
-    constructor():this("","","",0,0,"","", listOf()){
+    constructor():this("","","",0,0,"","", listOf(),System.currentTimeMillis(), listOf(),""){
 
     }
 
-    fun setDetails(jobTitle: String,minSalary: Int,maxSalary: Int,gender: String, requirement: String,tags: List<String>){
+    fun setDetails(jobTitle: String,minSalary: Int,maxSalary: Int,gender: String, requirement: String,tags: List<String>,language:List<String>){
         this.jobTitle = jobTitle
         this.minSalary = minSalary
         this.maxSalary = maxSalary
         this.gender = gender
         this.requirement = requirement
         this.tags = tags
+        this.language = language
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -60,6 +63,7 @@ class Job(
         parcel.writeStringList(tags)
         parcel.writeLong(date_create)
         parcel.writeString(imageUrl)
+        parcel.writeStringList(language)
     }
 
     override fun describeContents(): Int {

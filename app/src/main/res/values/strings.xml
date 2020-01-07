@@ -21,4 +21,26 @@
     <string name="requirement">Requirement</string>
     <string name="post_date">Post Date</string>
     <string name="tags">Tags</string>
+    <string name="choose_picture">Choose Picture</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_profession">Enter Profession</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="prefer_not_to_mention">Prefer Not To Mention</string>
+    <string name="choose_interest">Choose Interest</string>
+    <string name="sales">Sales</string>
+    <string name="office">Office</string>
+    <string name="food_and_beverage"><![CDATA[Food & Beverage]]></string>
+    <string name="software">Software</string>
+    <string name="network">Network</string>
+    <string name="account">Account</string>
+    <string name="engineering">Engineering</string>
+    <string name="customer_service">Customer Service</string>
+    <string name="warehouse">Warehouse</string>
+    <string name="security">Security</string>
+    <string name="register">Register</string>
+    <string name="go_to_login">Go To Login</string>
+    <string name="go_to_register_company">Go To Register Company</string>
+    <string name="title_register">Register User</string>
 </resources>

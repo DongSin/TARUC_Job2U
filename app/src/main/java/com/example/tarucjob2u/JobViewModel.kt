@@ -94,7 +94,8 @@ class JobViewModel(application: Application):AndroidViewModel(application) {
         val tags = listOf("Software","Mobile","Fast Food","International")
         if(downloadUri != null){
 
-            val job = Job(id,"MCD","Mobile Developer",3400,4000,"Male", "3 years of experience, willing to work overtime, high tolerant toward pressure", tags,System.currentTimeMillis(),downloadUri)
+            val job = Job(id,"MCD","Mobile Developer",3400,4000,"Male", "3 years of experience, willing to work overtime, high tolerant toward pressure", tags,System.currentTimeMillis(),
+                listOf("English","Malay"),downloadUri)
             jobRef.child(id).setValue(job).addOnCompleteListener {
                 Log.d("Debug", "job saved")
 
