@@ -14,4 +14,14 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="post_category">Category</string>
+    <string name="gender">Gender</string>
+    <string name="language">Language</string>
+    <string name="job_title">Job Title</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="maximum_salary">Maximum Salary</string>
+    <string name="minimum_salary">Minimum Salary</string>
+    <string name="requirement">Requirement</string>
 </resources>
