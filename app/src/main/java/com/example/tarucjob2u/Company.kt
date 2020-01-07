@@ -7,6 +7,7 @@ class Company(
     var description:String,
     var phone:String,
     var email:String,
+    val password:String,
     var jobs:List<Job>
 ) {
     fun setDetails(name: String,address: String,description: String,phone: String,email: String,jobs: List<Job>){

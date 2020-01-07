@@ -14,9 +14,9 @@ import com.example.tarucjob2u.JobViewModel
 import com.example.tarucjob2u.R
 import kotlinx.android.synthetic.main.fragment_latest_jobs.*
 
-class LatestJobFragment:Fragment() {
+class LatestJobFragment : Fragment() {
 
-    private lateinit var jobViewModel: JobViewModel
+    lateinit var jobViewModel: JobViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +38,8 @@ class LatestJobFragment:Fragment() {
         jobViewModel = ViewModelProviders.of(requireActivity()).get(JobViewModel::class.java)
         jobViewModel.jobList.observe(viewLifecycleOwner,
             Observer {
-                if(it.isNotEmpty()){
+                if (it.isNotEmpty()) {
+
                     adapter.setJobList(it)
                 }
             })
