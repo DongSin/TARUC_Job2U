@@ -43,7 +43,7 @@
     <string name="go_to_login">Go To Login</string>
     <string name="go_to_register_company">Go To Register Company</string>
     <string name="title_register">Register User</string>
-    <string name="enter_password">Enter Password</string>
+    <string name="enter_password">Enter Password (>5)</string>
     <string name="language">Language</string>
     <string name="login">Login</string>
     <string name="register_company">Register Company</string>

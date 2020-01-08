@@ -8,7 +8,7 @@ class Company(
     var phone:String,
     var email:String,
     val password:String,
-    var jobs:List<Job>,
+    var jobs:List<Job> = listOf(),
     val imageUri:String
 ) {
     fun setDetails(name: String,address: String,description: String,phone: String,email: String,jobs: List<Job>){
