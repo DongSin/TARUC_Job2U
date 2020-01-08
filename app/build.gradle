@@ -27,10 +27,25 @@ android {
 
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
     }
 }
 
+repositories {
+    google()
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

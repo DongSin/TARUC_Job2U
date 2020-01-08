@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/jobTypePie"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/jobTypeTable"
+        android:layout_width="357dp"
+        android:layout_height="427dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jobTypePie">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#51B435"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Rank" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Job Title" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:text="Availability" />
+        </TableRow>
+
+        <TableRow
+            android:background="#F0F7F7"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/rank1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textAlignment="center"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/job1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/available1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75" />
+        </TableRow>
+
+        <TableRow
+            android:background="#F0F7F7"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/rank2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textAlignment="center"
+                android:text="2" />
+
+            <TextView
+                android:id="@+id/job2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/available2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75" />
+        </TableRow>
+
+        <TableRow
+            android:background="#F0F7F7"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/rank3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textAlignment="center"
+                android:text="3" />
+
+            <TextView
+                android:id="@+id/job3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/available3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75" />
+        </TableRow>
+
+        <TableRow
+            android:background="#F0F7F7"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/rank4"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textAlignment="center"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/job4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/available4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75" />
+        </TableRow>
+
+        <TableRow
+            android:background="#F0F7F7"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/rank5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textAlignment="center"
+                android:text="5" />
+
+            <TextView
+                android:id="@+id/job5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/available5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75" />
+        </TableRow>
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
