@@ -13,6 +13,9 @@ class User(
     var profession:String,
     val imageUri: String
 ) {
+    constructor():this("","","","","", listOf<String>(), listOf<String>(),"",""){
+
+    }
     fun setDetails(name: String,email: String,interest: List<String>,profession: String,language: List<String>){
         this.name = name
         this.email = email

@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tarucjob2u.JobAdapter
-import com.example.tarucjob2u.JobViewModel
 import com.example.tarucjob2u.R
 import kotlinx.android.synthetic.main.fragment_latest_jobs.*
 

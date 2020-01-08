@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.tarucjob2u.LoginActivity
-import com.example.tarucjob2u.MainActivity
 import com.example.tarucjob2u.R
 import com.example.tarucjob2u.ui.post_job.job_category
 import com.google.firebase.auth.FirebaseAuth
@@ -32,7 +30,7 @@ class ProfileFragment:Fragment() {
 
         button2.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
-            val intent = Intent(requireContext(),LoginActivity::class.java)
+            val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
         }

@@ -1,4 +1,4 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.profile
 
 import android.app.Activity
 import android.content.Context
@@ -13,12 +13,13 @@ import android.view.inputmethod.InputMethodManager
 import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.core.text.isDigitsOnly
+import com.example.tarucjob2u.Company
+import com.example.tarucjob2u.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_register_company.*
 
 class RegisterCompanyActivity : AppCompatActivity() {
@@ -41,24 +42,32 @@ class RegisterCompanyActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register_company)
 
         imageViewImageUploadCompany.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             openFileChooser()
         }
 
         textViewGoLoginFromCompany.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         textViewGoRegisterUserFromCompany.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
         buttonRegisterCompany.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             val inputMethodManager =
                 getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
@@ -71,33 +80,26 @@ class RegisterCompanyActivity : AppCompatActivity() {
     private fun uploadImage() {
 
 
-        if (imageUri != null) {
-            val mStoreRef =
-                storageRef.child("" + System.currentTimeMillis() + "." + getImageExtension(imageUri!!))
-            mStoreRef.putFile(imageUri!!).addOnFailureListener {
-                Toast.makeText(this, "An error has occurred:" + it.message, Toast.LENGTH_LONG)
-                    .show()
+        val mStoreRef =
+            storageRef.child("" + System.currentTimeMillis() + "." + getImageExtension(imageUri!!))
+        mStoreRef.putFile(imageUri!!).addOnFailureListener {
+            Toast.makeText(this, "An error has occurred:" + it.message, Toast.LENGTH_LONG)
+                .show()
 
 
-            }.addOnSuccessListener {
+        }.addOnSuccessListener {
 
-                mStoreRef.downloadUrl.addOnSuccessListener {
-                    createCompany(it.toString())
+            mStoreRef.downloadUrl.addOnSuccessListener {
+                createCompany(it.toString())
 
-                }
-                var handler = Handler()
-                handler.postDelayed({
-                    progressBarRegisterCompany.progress = 0
-                }, 5000)
-            }.addOnProgressListener {
-                var progress = (100.0 * it.bytesTransferred / it.totalByteCount)
-                progressBarRegisterCompany.progress = progress.toInt()
             }
-
-
-        } else {
-            Toast.makeText(this, "No image selected", Toast.LENGTH_LONG).show()
-            return
+            var handler = Handler()
+            handler.postDelayed({
+                progressBarRegisterCompany.progress = 0
+            }, 5000)
+        }.addOnProgressListener {
+            var progress = (100.0 * it.bytesTransferred / it.totalByteCount)
+            progressBarRegisterCompany.progress = progress.toInt()
         }
 
 
@@ -136,6 +138,12 @@ class RegisterCompanyActivity : AppCompatActivity() {
     }
 
     private fun validate(): Boolean {
+
+        if (imageUri == null) {
+            Toast.makeText(this, "No image selected", Toast.LENGTH_LONG).show()
+            return false
+        }
+
         name = editTextNameCompany.text.toString()
         if (name.isEmpty()) {
             Toast.makeText(this, "Name invalid", Toast.LENGTH_LONG).show()
@@ -203,7 +211,9 @@ class RegisterCompanyActivity : AppCompatActivity() {
         var intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        startActivityForResult(intent,
+            PICK_IMAGE_REQUEST
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

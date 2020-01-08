@@ -2,13 +2,18 @@ package com.example.tarucjob2u
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tarucjob2u.ui.home.JobDetailActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 
 class JobAdapter internal constructor(context: Context) :
@@ -33,22 +38,33 @@ class JobAdapter internal constructor(context: Context) :
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val job = jobList[position]
         //set details into holder
-        if (job.imageUrl != "") {
-            Picasso.with(mContext).load(job.imageUrl).fit().centerCrop()
-                .into(holder.imageViewCompanyLogo)
+        val companyRef = FirebaseDatabase.getInstance().getReference("Companies")
+        var company:Company
+        companyRef.child(job.companyId).addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                Log.d("Adapter","An error has occurred:"+p0.message)
+            }
 
-        } else {
-            holder.imageViewCompanyLogo.setImageResource(R.drawable.ic_account_box_black_24dp)
+            override fun onDataChange(p0: DataSnapshot) {
+                company = p0.getValue(Company::class.java)!!
+                setHolderDetail(company,job,holder)
+            }
+        })
 
-        }
-        holder.textViewCompanyName.text = job.companyName
+
+    }
+
+    private fun setHolderDetail(company: Company,job: Job,holder: JobViewHolder) {
+        if(company.imageUri != "") Picasso.with(mContext).load(company.imageUri).fit().centerCrop().into(holder.imageViewCompanyLogo)
+        else holder.imageViewCompanyLogo.setImageResource(R.drawable.ic_account_box_black_24dp)
+        holder.textViewCompanyName.text = company.name
         holder.textViewJobTitle.text = job.jobTitle
         holder.textViewSalary.text = "RM" + job.minSalary + " - RM" + job.maxSalary
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(mContext,JobDetailActivity::class.java)
+            val intent = Intent(mContext, JobDetailActivity::class.java)
             intent.putExtra("job",job)
-
+            intent.putExtra("company",company)
             mContext.startActivity(intent)
         }
     }
@@ -58,6 +74,7 @@ class JobAdapter internal constructor(context: Context) :
         val textViewCompanyName: TextView = itemView.findViewById(R.id.textViewCompanyName)
         val textViewJobTitle: TextView = itemView.findViewById(R.id.textViewJobTitle)
         val textViewSalary: TextView = itemView.findViewById(R.id.textViewSalary)
+
 
     }
 
