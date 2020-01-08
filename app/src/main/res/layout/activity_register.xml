@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/ConstraintLayoutRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -11,7 +11,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-351dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,17 +57,17 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
                 android:hint="@string/enter_email"
-                android:inputType="textPersonName"/>
+                android:inputType="textEmailAddress" />
+
             <EditText
-                android:id="@+id/editTextPhone"
+                android:id="@+id/editTextProfession"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
                 android:hint="@string/enter_profession"
-                android:inputType="textPersonName"
-                 />
+                android:inputType="textPersonName" />
 
 
             <EditText
@@ -76,8 +78,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
                 android:hint="@string/enter_password"
-                android:inputType="textPassword"
-                />
+                android:inputType="textPassword" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -190,7 +191,7 @@
                     android:layout_height="match_parent">
 
                     <CheckBox
-                        android:id="@+id/checkBox"
+                        android:id="@+id/checkBoxSales"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -305,7 +306,7 @@
                 android:textColor="@android:color/white" />
 
             <TextView
-                android:id="@+id/textViewGoLoginFromCompany"
+                android:id="@+id/textViewGoLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -315,11 +316,10 @@
                 android:layout_marginRight="8dp"
                 android:clickable="true"
                 android:text="@string/go_to_login"
-                android:textColor="@color/design_default_color_primary"
-                app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+                android:textColor="@color/design_default_color_primary" />
 
             <TextView
-                android:id="@+id/textViewGoRegisterUserFromCompany"
+                android:id="@+id/textViewGoRegisterCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -330,11 +330,9 @@
                 android:layout_marginBottom="16dp"
                 android:clickable="true"
                 android:text="@string/go_to_register_company"
-                android:textColor="@color/design_default_color_primary"
-                app:layout_constraintTop_toBottomOf="@+id/textViewGoLoginFromCompany" />
+                android:textColor="@color/design_default_color_primary" />
         </LinearLayout>
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
