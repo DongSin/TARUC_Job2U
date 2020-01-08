@@ -1,22 +1,30 @@
 package com.example.tarucjob2u
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
-class JobAdapter internal constructor(context:Context):RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+class JobAdapter internal constructor(context: Context) :
+    RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var jobList = emptyList<Job>()
+    private val mContext = context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
-        val itemView = inflater.inflate(R.layout.job_record,parent,false)
+        val itemView = inflater.inflate(R.layout.job_record, parent, false)
+
         return JobViewHolder(itemView)
     }
+
+
 
     override fun getItemCount(): Int {
         return jobList.size
@@ -25,21 +33,35 @@ class JobAdapter internal constructor(context:Context):RecyclerView.Adapter<JobA
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val job = jobList[position]
         //set details into holder
-        holder.imageViewCompanyLogo.setImageResource(R.drawable.ic_account_box_black_24dp)
+        if (job.imageUrl != "") {
+            Picasso.with(mContext).load(job.imageUrl).fit().centerCrop()
+                .into(holder.imageViewCompanyLogo)
+
+        } else {
+            holder.imageViewCompanyLogo.setImageResource(R.drawable.ic_account_box_black_24dp)
+
+        }
         holder.textViewCompanyName.text = job.companyName
         holder.textViewJobTitle.text = job.jobTitle
-        holder.textViewSalary.text = ""+job.minSalary + " - " + job.maxSalary
+        holder.textViewSalary.text = "RM" + job.minSalary + " - RM" + job.maxSalary
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(mContext,JobDetailActivity::class.java)
+            intent.putExtra("job",job)
+
+            mContext.startActivity(intent)
+        }
     }
 
-    inner class JobViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        val imageViewCompanyLogo:ImageView = itemView.findViewById(R.id.imageViewCompanyLogo)
-        val textViewCompanyName:TextView = itemView.findViewById(R.id.textViewCompanyName)
-        val textViewJobTitle:TextView = itemView.findViewById(R.id.textViewJobTitle)
-        val textViewSalary:TextView = itemView.findViewById(R.id.textViewSalary)
+    inner class JobViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageViewCompanyLogo: ImageView = itemView.findViewById(R.id.imageViewCompanyLogo)
+        val textViewCompanyName: TextView = itemView.findViewById(R.id.textViewCompanyName)
+        val textViewJobTitle: TextView = itemView.findViewById(R.id.textViewJobTitle)
+        val textViewSalary: TextView = itemView.findViewById(R.id.textViewSalary)
 
     }
 
-    fun setJobList(jobList:List<Job>){
+    fun setJobList(jobList: List<Job>) {
         this.jobList = jobList
         notifyDataSetChanged()
     }

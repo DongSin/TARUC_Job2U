@@ -1,13 +1,15 @@
 package com.example.tarucjob2u
 
-data class Company(
-    val id:Int,
+class Company(
+    val id:String,
     var name:String,
     var address:String,
     var description:String,
     var phone:String,
     var email:String,
-    var jobs:List<Job>
+    val password:String,
+    var jobs:List<Job> = listOf(),
+    val imageUri:String
 ) {
     fun setDetails(name: String,address: String,description: String,phone: String,email: String,jobs: List<Job>){
         this.name = name

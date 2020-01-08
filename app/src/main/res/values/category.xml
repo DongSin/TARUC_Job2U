@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cat_sales">Sales</string>
+    <string name="cat_office">Office</string>
+    <string name="cat_software">Software</string>
+    <string name="cat_food_beverage">Food &amp; Beverage</string>
+    <string name="cat_network">Network</string>
+    <string name="cat_account">Account</string>
+    <string name="cat_engineering">Engineering</string>
+    <string name="cat_customer_service">Customer Service</string>
+    <string name="cat_warehouse">Warehouse</string>
+    <string name="cat_security">Security</string>
+
+    <string name="gender_no_preference">No Preference</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+
+    <string name="language_no_limit">No Limit</string>
+    <string name="language_english">English</string>
+    <string name="language_mandarin">Mandarin</string>
+    <string name="language_bm">Bahasa Malaysia</string>
+    <string name="language_tamil">Tamil</string>
+
+    <string name="hint_jobtitle">Please fill in job position</string>
+    <string name="hint_requirement">Please fill in requirement</string>
+
+
+</resources>

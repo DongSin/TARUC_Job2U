@@ -1,6 +1,7 @@
 package com.example.tarucjob2u.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +14,9 @@ import com.example.tarucjob2u.JobViewModel
 import com.example.tarucjob2u.R
 import kotlinx.android.synthetic.main.fragment_latest_jobs.*
 
-class LatestJobFragment:Fragment() {
+class LatestJobFragment : Fragment() {
 
-    private lateinit var jobViewModel: JobViewModel
+    lateinit var jobViewModel: JobViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,11 +33,13 @@ class LatestJobFragment:Fragment() {
 
         recyclerViewJobs.adapter = adapter
         recyclerViewJobs.layoutManager = LinearLayoutManager(requireContext())
+        Log.d("Debug", "test")
 
         jobViewModel = ViewModelProviders.of(requireActivity()).get(JobViewModel::class.java)
-        jobViewModel.jobList.observe(this,
+        jobViewModel.jobList.observe(viewLifecycleOwner,
             Observer {
-                if(it.isNotEmpty()){
+                if (it.isNotEmpty()) {
+
                     adapter.setJobList(it)
                 }
             })
