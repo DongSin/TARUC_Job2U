@@ -50,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        FirebaseAuth.getInstance().signInAnonymously()
+
 
         imageViewImageUpload.setOnClickListener {
             it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))

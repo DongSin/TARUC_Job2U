@@ -57,28 +57,16 @@
         android:id="@+id/buttonLoginUser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:background="@color/colorPrimary"
-        android:text="@string/login_user"
+        android:text="@string/login"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/buttonLoginCompany"
-        app:layout_constraintStart_toStartOf="@+id/editTextPasswordLogin"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin" />
-
-    <Button
-        android:id="@+id/buttonLoginCompany"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimaryThin"
-        android:text="@string/login_company"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPasswordLogin"
-        app:layout_constraintStart_toEndOf="@+id/buttonLoginUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin" />
 
     <TextView
