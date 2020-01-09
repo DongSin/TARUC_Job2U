@@ -98,22 +98,22 @@ class job_category : AppCompatActivity() {
         }
         val ref = FirebaseDatabase.getInstance().getReference("Jobs")
 
-        val postJobId = ref.push().key
-        val newPostJob = Post_job(
-            postJobId!!,
-            jobPosition,
-            requirement,
-            minSalary,
-            maxSalary,
-            gender,
-            language,
-            interest
-        )
-
-
-        ref.child(postJobId).setValue(newPostJob).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Save successfully", Toast.LENGTH_LONG).show()
-        }
+//        val postJobId = ref.push().key
+//        val newPostJob = Post_job(
+//            postJobId!!,
+//            jobPosition,
+//            requirement,
+//            minSalary,
+//            maxSalary,
+//            gender,
+//            language,
+//            interest
+//        )
+//
+//
+//        ref.child(postJobId).setValue(newPostJob).addOnCompleteListener {
+//            Toast.makeText(applicationContext, "Save successfully", Toast.LENGTH_LONG).show()
+//        }
 
     }
 }

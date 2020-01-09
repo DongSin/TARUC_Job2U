@@ -32,7 +32,7 @@ class LatestJobFragment : Fragment() {
 
         recyclerViewJobs.adapter = adapter
         recyclerViewJobs.layoutManager = LinearLayoutManager(requireContext())
-        Log.d("Debug", "test")
+
 
         jobViewModel = ViewModelProviders.of(requireActivity()).get(JobViewModel::class.java)
         jobViewModel.jobList.observe(viewLifecycleOwner,

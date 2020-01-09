@@ -32,6 +32,7 @@ class CompanyFragment:Fragment() {
             Observer {
                 if(it.isNotEmpty()){
                     companyAdapter.setCompanyList(it)
+
                 }
             })
         recyclerViewCompany.adapter = companyAdapter
