@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tarucjob2u.ui.home.JobDetailActivity
+import com.example.tarucjob2u.ui.home.PostedJobsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,8 +20,8 @@ import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 
-class JobAdapter internal constructor(context: Context) :
-    RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+class PostedJobAdapter internal constructor(context: Context) :
+    RecyclerView.Adapter<PostedJobAdapter.JobViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var jobList = emptyList<Job>()
@@ -65,7 +66,7 @@ class JobAdapter internal constructor(context: Context) :
         holder.textViewSalary.text = "RM" + job.minSalary + " - RM" + job.maxSalary
 
         holder.itemView.setOnClickListener {
-            var intent = Intent(mContext, JobDetailActivity::class.java)
+            var intent = Intent(mContext, EditJobActivity::class.java)
             intent.putExtra("job",job)
             intent.putExtra("company",company)
             mContext.startActivity(intent)

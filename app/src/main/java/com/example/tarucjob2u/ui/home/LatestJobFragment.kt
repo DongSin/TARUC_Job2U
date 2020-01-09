@@ -38,8 +38,9 @@ class LatestJobFragment : Fragment() {
         jobViewModel.jobList.observe(viewLifecycleOwner,
             Observer {
                 if (it.isNotEmpty()) {
-
-                    adapter.setJobList(it)
+                    val sorted = it.toMutableList()
+                    sorted.sortByDescending { it1 -> it1.date_create }
+                    adapter.setJobList(sorted.toList())
                 }
             })
     }

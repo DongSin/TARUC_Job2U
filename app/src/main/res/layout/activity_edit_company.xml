@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayoutEditCompany"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ui.profile.RegisterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewEditImageCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/choose_picture"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="97dp" />
+
+            <ImageView
+                android:id="@+id/imageViewEditCompanyImage"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_account_circle_green_24dp"
+                tools:layout_conversion_absoluteHeight="150dp"
+                tools:layout_conversion_absoluteWidth="150dp" />
+
+            <EditText
+                android:id="@+id/editTextEditCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="32dp"
+                android:hint="@string/enter_name"
+                android:inputType="textPersonName" />
+
+
+            <EditText
+                android:id="@+id/editTextEditCompanyPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="32dp"
+                android:hint="@string/enter_phone"
+                android:inputType="textPhonetic" />
+
+
+            <EditText
+                android:id="@+id/editTextEditCompanyAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="32dp"
+                android:hint="@string/enter_address"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextEditCompanyDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="32dp"
+                android:hint="@string/enter_description"
+                android:inputType="textMultiLine" />
+
+            <Button
+                android:id="@+id/buttonEditCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="32dp"
+                android:background="@color/colorAccent"
+                android:text="@string/update"
+                android:textColor="@android:color/white" />
+
+            <ProgressBar
+                android:id="@+id/progressBarEditCompany"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="32dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
