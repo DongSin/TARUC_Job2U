@@ -22,7 +22,6 @@ class JobViewModel(application: Application) : AndroidViewModel(application) {
     val jobList: MutableLiveData<List<Job>> = MutableLiveData()
     val database = FirebaseDatabase.getInstance()
     val jobRef = database.getReference("Jobs")
-    val storageRef = FirebaseStorage.getInstance().getReference("Images")
 
     init {
 

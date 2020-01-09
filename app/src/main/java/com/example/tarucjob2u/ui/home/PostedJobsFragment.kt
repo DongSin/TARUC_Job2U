@@ -14,5 +14,6 @@ class PostedJobsFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_posted_jobs, container, false)
+        //todo display company posted job
     }
 }
