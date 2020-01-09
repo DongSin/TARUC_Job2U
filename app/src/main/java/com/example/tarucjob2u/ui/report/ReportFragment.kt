@@ -9,8 +9,6 @@ import androidx.viewpager.widget.ViewPager
 import com.example.tarucjob2u.R
 import com.example.tarucjob2u.SectionPagerAdapter
 import com.example.tarucjob2u.ui.home.LatestJobFragment
-import com.example.tarucjob2u.ui.home.LocalFragment
-import com.example.tarucjob2u.ui.home.OverseasFragment
 import com.example.tarucjob2u.ui.home.SpecialFragment
 import com.google.android.material.tabs.TabLayout
 

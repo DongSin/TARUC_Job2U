@@ -15,7 +15,7 @@ class ProfessionFragment :Fragment(){
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_latest_jobs, container, false)
+        return inflater.inflate(R.layout.fragment_profession_year, container, false)
 
     }
 }

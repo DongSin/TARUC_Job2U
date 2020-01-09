@@ -17,7 +17,7 @@ class HighPaidJobFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_latest_jobs, container, false)
+        return inflater.inflate(R.layout.fragment_high_paid_jobs_report, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
