@@ -19,7 +19,6 @@ class job_category : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.post_job)
 
-
         editTextJobPosition = findViewById(R.id.editTextJobPosition)
         editTextRequirement = findViewById(R.id.editTextRequirement)
         editTextMinSalary = findViewById(R.id.editTextMinSalary)
@@ -30,7 +29,6 @@ class job_category : AppCompatActivity() {
             postJob()
 
         }
-
     }
 
     private fun postJob() {
@@ -103,8 +101,8 @@ class job_category : AppCompatActivity() {
             postJobId!!,
             jobPosition,
             requirement,
-            minSalary,
-            maxSalary,
+            minS,
+            maxS,
             gender,
             language,
             interest
