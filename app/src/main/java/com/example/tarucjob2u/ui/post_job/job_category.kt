@@ -48,7 +48,8 @@ class job_category : AppCompatActivity() {
                 return
             }
         }
-
+        val minS: Int = minSalary.toInt()
+        val maxS: Int = maxSalary.toInt()
         val language = mutableListOf<String>()
         if (checkBoxEnglish.isChecked) language.add("English")
         if (checkBoxChinese.isChecked) language.add("Chinese")
@@ -70,15 +71,19 @@ class job_category : AppCompatActivity() {
 
 
         if (jobPosition.isEmpty()) {
-            editTextJobPosition.error = "Please enter a job position."
+            Toast.makeText(applicationContext, "Job position is required.", Toast.LENGTH_LONG).show()
+//            editTextJobPosition.error = "Please enter a job position."
             return
         }
         if (requirement.isEmpty()) {
-            editTextRequirement.error = "Please enter a requirement."
+            Toast.makeText(applicationContext, "Requirement is required.", Toast.LENGTH_LONG)
+                .show()
+//            editTextRequirement.error = "Please enter a requirement."
             return
         }
         if (minSalary.isEmpty()) {
-            editTextMinSalary.error = "Minimum Salary is required."
+            Toast.makeText(applicationContext, "Minimum Salary is required.", Toast.LENGTH_LONG).show()
+//            editTextMinSalary.error = "Minimum Salary is required."
             return
         }
         if (maxSalary.isEmpty()) {
@@ -87,7 +92,11 @@ class job_category : AppCompatActivity() {
             return
         }
 
-        val ref = FirebaseDatabase.getInstance().getReference("Posted Job")
+        if (maxS < minS) {
+            Toast.makeText(applicationContext, "Maximum salary cannot smaller than Minimum salary.", Toast.LENGTH_LONG).show()
+            return
+        }
+        val ref = FirebaseDatabase.getInstance().getReference("Jobs")
 
         val postJobId = ref.push().key
         val newPostJob = Post_job(
