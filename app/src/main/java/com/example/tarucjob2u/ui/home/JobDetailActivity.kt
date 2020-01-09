@@ -1,8 +1,14 @@
 package com.example.tarucjob2u.ui.home
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tarucjob2u.Company
 import com.example.tarucjob2u.Job
@@ -51,6 +57,64 @@ class JobDetailActivity : AppCompatActivity() {
         recyclerViewLanguage.adapter = languageAdapter
         recyclerViewLanguage.layoutManager =
             LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+
+        textViewPhone.setOnClickListener {
+            checkPermission()
+        }
+
+        textViewEmail.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("mailto:") // only email apps should handle this
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(textViewEmail.text.toString()))
+            intent.putExtra(Intent.EXTRA_SUBJECT,"Feedback")
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
+        }
+
+    }
+    fun checkPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE)
+            != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.CALL_PHONE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.CALL_PHONE),
+                    42)
+            }
+        } else {
+            // Permission has already been granted
+            callPhone()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        if (requestCode == 42) {
+            // If request is cancelled, the result arrays are empty.
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                // permission was granted, yay!
+                callPhone()
+            } else {
+                // permission denied, boo! Disable the
+                // functionality
+            }
+            return
+        }
+    }
+
+    fun callPhone(){
+        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + textViewPhone.text))
+        startActivity(intent)
     }
 
     private fun getIncomingIntent() {

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tarucjob2u">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,14 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CompanyActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".EditCompanyActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/edit_company"></activity>
+        <activity android:name=".EditUserActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/edit_user"/>
+        <activity android:name=".UserProfileActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/title_profile"/>
+        <activity
+            android:name=".CompanyActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/company"
+            android:exported="true"/>
         <activity
             android:name=".ui.profile.RegisterCompanyActivity"
             android:label="@string/register_company" />
         <activity
             android:name=".ui.home.JobDetailActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:label="@string/job"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />
@@ -27,14 +42,14 @@
             android:label="@string/title_register"></activity>
         <activity
             android:name=".ui.post_job.job_category"
-            android:label="@string/app_name"></activity>
+            android:label="@string/post_job" />
         <activity
             android:name=".EditJobActivity"
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".ui.profile.LoginActivity"
-            android:label="@string/login">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

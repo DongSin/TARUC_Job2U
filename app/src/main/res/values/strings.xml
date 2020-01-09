@@ -76,4 +76,8 @@
     <string name="profession">Profession</string>
     <string name="interest">Interest</string>
     <string name="update">Update</string>
+    <string name="edit_company">Edit Company</string>
+    <string name="edit_user">Edit User</string>
+    <string name="company">Company</string>
+    <string name="job">Job</string>
 </resources>
