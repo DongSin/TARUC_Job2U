@@ -164,7 +164,7 @@ class RegisterActivity : AppCompatActivity() {
         if (checkBoxNetwork.isChecked) interest.add("Network")
         if (checkBoxAccount.isChecked) interest.add("Account")
         if (checkBoxEngineering.isChecked) interest.add("Engineering")
-        if (checkBoxCustomerService.isChecked) interest.add("Customer service")
+        if (checkBoxCustomerService.isChecked) interest.add("Customer Service")
         if (checkBoxWarehouse.isChecked) interest.add("Warehouse")
         if (checkBoxSecurity.isChecked) interest.add("Security")
         if (interest.size == 0) {

@@ -19,43 +19,61 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val user = FirebaseAuth.getInstance().currentUser
 
+        FirebaseDatabase.getInstance().getReference("Companies").child(user!!.uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                    Toast.makeText(
+                        applicationContext,
+                        "An error has occurred:" + p0.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
 
-        FirebaseDatabase.getInstance().getReference("Companies").child(user!!.uid).addValueEventListener(object:ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Toast.makeText(applicationContext,"An error has occurred:"+p0.message,Toast.LENGTH_LONG).show()
-            }
+                override fun onDataChange(p0: DataSnapshot) {
+                    if (p0.exists()) {
+                        floatingActionButtonAddJob.show()
+                        Global.loginCompany = p0.getValue(Company::class.java)
+                        Global.loginUser = null
+                    }
+                }
 
-            override fun onDataChange(p0: DataSnapshot) {
-                if(p0.exists()) floatingActionButtonAddJob.show()
-            }
+            })
 
-        })
+        FirebaseDatabase.getInstance().getReference("Users").child(user.uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                    Toast.makeText(
+                        applicationContext,
+                        "An error has occurred:" + p0.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
 
-        FirebaseDatabase.getInstance().getReference("Users").child(user!!.uid).addValueEventListener(object:ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Toast.makeText(applicationContext,"An error has occurred:"+p0.message,Toast.LENGTH_LONG).show()
-            }
+                override fun onDataChange(p0: DataSnapshot) {
+                    if (p0.exists()) {
+                        floatingActionButtonAddJob.hide()
+                        Global.loginUser = p0.getValue(User::class.java)
+                        Global.loginCompany = null
+                    }
 
-            override fun onDataChange(p0: DataSnapshot) {
-                if(p0.exists())floatingActionButtonAddJob.hide()
+                }
 
-            }
-
-        })
+            })
 
 
         floatingActionButtonAddJob.setOnClickListener {
-            val intent = Intent(this,job_category::class.java)
+            val intent = Intent(this, job_category::class.java)
             startActivity(intent)
         }
-
-
 
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)

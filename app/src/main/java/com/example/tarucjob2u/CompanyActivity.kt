@@ -3,7 +3,10 @@ package com.example.tarucjob2u
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tarucjob2u.ui.home.JobViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_company.*
 import kotlinx.android.synthetic.main.company_record.*
@@ -29,6 +32,14 @@ class CompanyActivity : AppCompatActivity() {
 
         val companyJobAdapter = CompanyJobAdapter(this)
         companyJobAdapter.setCompany(company)
+        val jobViewModel = ViewModelProviders.of(this).get(JobViewModel::class.java)
+        jobViewModel.jobList.observe(this,
+            Observer {
+                if (it.isNotEmpty()) {
+
+                    companyJobAdapter.setJobList(company.getJobs(it))
+                }
+            })
         companyJobAdapter.setJobList(company.getJobs())
         recyclerViewCompanyDetailJobs.adapter = companyJobAdapter
         recyclerViewCompanyDetailJobs.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
