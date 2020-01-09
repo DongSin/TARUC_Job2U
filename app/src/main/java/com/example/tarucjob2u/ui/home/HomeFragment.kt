@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.TabHost
-import android.widget.TableLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -18,7 +15,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class HomeFragment : Fragment() {
@@ -68,7 +64,10 @@ class HomeFragment : Fragment() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
+                    pagerAdapter.addFragment(LatestJobFragment(),"Latest")
                     pagerAdapter.addFragment(PostedJobsFragment(),"Posted")
+                    pagerAdapter.addFragment(HighPayFragment(),"High Pay")
+                    pagerAdapter.addFragment(CompanyFragment(),"Company")
 
                     viewPager.adapter = pagerAdapter
                 }
@@ -86,8 +85,8 @@ class HomeFragment : Fragment() {
                 if(p0.exists()){
                     pagerAdapter.addFragment(LatestJobFragment(),"Latest")
                     pagerAdapter.addFragment(SpecialFragment(),"Special")
-                    pagerAdapter.addFragment(LocalFragment(),"Local")
-                    pagerAdapter.addFragment(OverseasFragment(),"Overseas")
+                    pagerAdapter.addFragment(HighPayFragment(),"HighPay")
+                    pagerAdapter.addFragment(CompanyFragment(),"Company")
 
                     viewPager.adapter = pagerAdapter
 

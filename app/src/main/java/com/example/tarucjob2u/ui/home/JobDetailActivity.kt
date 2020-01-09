@@ -55,13 +55,13 @@ class JobDetailActivity : AppCompatActivity() {
 
     private fun getIncomingIntent() {
         if (intent.hasExtra("job")) {
-            Log.d("Debug", "intent success")
+
             job = intent.getParcelableExtra<Job>("job")
             company = intent.getParcelableExtra<Company>("company")
 
 
         } else {
-            Log.d("Debug", "intent failed")
+
             finish()
         }
     }
