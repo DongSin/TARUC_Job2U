@@ -2,17 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+    android:background="@android:color/white"
+    app:cardBackgroundColor="#fff"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
 
     <ImageView
         android:id="@+id/imageViewCompanyLogo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,9 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:text="TextView"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +47,7 @@
         android:id="@+id/textViewJobTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/textViewCompanyName"
         app:layout_constraintStart_toStartOf="@+id/textViewCompanyName"
@@ -47,9 +57,11 @@
         android:id="@+id/textViewSalary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/textViewJobTitle"
         app:layout_constraintStart_toStartOf="@+id/textViewJobTitle"
         app:layout_constraintTop_toBottomOf="@+id/textViewJobTitle" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

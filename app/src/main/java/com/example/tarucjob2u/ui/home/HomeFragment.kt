@@ -7,13 +7,18 @@ import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.TabHost
 import android.widget.TableLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.example.tarucjob2u.R
 import com.example.tarucjob2u.SectionPagerAdapter
 import com.google.android.material.tabs.TabLayout
-
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class HomeFragment : Fragment() {
@@ -53,11 +58,45 @@ class HomeFragment : Fragment() {
 
     private fun setUpViewPager(viewPager: ViewPager) {
         val pagerAdapter = SectionPagerAdapter(childFragmentManager)
-        pagerAdapter.addFragment(LatestJobFragment(),"Latest")
-        pagerAdapter.addFragment(SpecialFragment(),"Special")
-        pagerAdapter.addFragment(LocalFragment(),"Local")
-        pagerAdapter.addFragment(OverseasFragment(),"Overseas")
 
-        viewPager.adapter = pagerAdapter
+        val user = FirebaseAuth.getInstance().currentUser
+        FirebaseDatabase.getInstance().getReference("Companies").child(user!!.uid).addValueEventListener(object:
+            ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                Toast.makeText(requireContext(),"An error has occurred:"+p0.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    pagerAdapter.addFragment(PostedJobsFragment(),"Posted")
+
+                    viewPager.adapter = pagerAdapter
+                }
+            }
+
+        })
+
+        FirebaseDatabase.getInstance().getReference("Users").child(user!!.uid).addValueEventListener(object:
+            ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                Toast.makeText(requireContext(),"An error has occurred:"+p0.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    pagerAdapter.addFragment(LatestJobFragment(),"Latest")
+                    pagerAdapter.addFragment(SpecialFragment(),"Special")
+                    pagerAdapter.addFragment(LocalFragment(),"Local")
+                    pagerAdapter.addFragment(OverseasFragment(),"Overseas")
+
+                    viewPager.adapter = pagerAdapter
+
+                }
+
+            }
+
+        })
+
+
     }
 }

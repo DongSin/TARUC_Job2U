@@ -1,4 +1,4 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.profile
 
 import android.app.Activity
 import android.content.Context
@@ -7,23 +7,18 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.text.style.UpdateLayout
 import android.util.Log
 import android.util.Patterns
-import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.webkit.MimeTypeMap
-import android.widget.RadioButton
 import android.widget.Toast
-import com.google.android.gms.auth.api.signin.internal.Storage
-import com.google.android.gms.tasks.Continuation
-import com.google.android.gms.tasks.Task
+import com.example.tarucjob2u.R
+import com.example.tarucjob2u.User
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
@@ -53,24 +48,32 @@ class RegisterActivity : AppCompatActivity() {
 
 
         imageViewImageUpload.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             openFileChooser()
         }
 
         textViewGoLogin.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         textViewGoRegisterCompany.setOnClickListener {
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             val intent = Intent(this, RegisterCompanyActivity::class.java)
             startActivity(intent)
         }
 
         buttonRegister.setOnClickListener {
             if (mUploadTask != null && mUploadTask!!.isInProgress) return@setOnClickListener
-            it.startAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_click))
+            it.startAnimation(AnimationUtils.loadAnimation(this,
+                R.anim.anim_click
+            ))
             // Hide the keyboard.
             val inputMethodManager =
                 getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -83,40 +86,37 @@ class RegisterActivity : AppCompatActivity() {
     private fun uploadImage() {
 
 
-
-        if (imageUri != null) {
-            val mStoreRef =
-                storageRef.child("" + System.currentTimeMillis() + "." + getImageExtension(imageUri!!))
-            mUploadTask = mStoreRef.putFile(imageUri!!).addOnFailureListener {
-                Toast.makeText(this, "An error has occurred:" + it.message, Toast.LENGTH_LONG)
-                    .show()
+        val mStoreRef =
+            storageRef.child("" + System.currentTimeMillis() + "." + getImageExtension(imageUri!!))
+        mUploadTask = mStoreRef.putFile(imageUri!!).addOnFailureListener {
+            Toast.makeText(this, "An error has occurred:" + it.message, Toast.LENGTH_LONG)
+                .show()
 
 
-            }.addOnSuccessListener {
+        }.addOnSuccessListener {
 
-                mStoreRef.downloadUrl.addOnSuccessListener {
-                    createUser(it.toString())
+            mStoreRef.downloadUrl.addOnSuccessListener {
+                createUser(it.toString())
 
-                }
-                var handler = Handler()
-                handler.postDelayed({
-                    progressBarRegister.progress = 0
-                }, 5000)
-            }.addOnProgressListener {
-                var progress = (100.0 * it.bytesTransferred / it.totalByteCount)
-                progressBarRegister.progress = progress.toInt()
             }
-
-
-        } else {
-            Toast.makeText(this, "No image selected", Toast.LENGTH_LONG).show()
-            return
+            var handler = Handler()
+            handler.postDelayed({
+                progressBarRegister.progress = 0
+            }, 5000)
+        }.addOnProgressListener {
+            var progress = (100.0 * it.bytesTransferred / it.totalByteCount)
+            progressBarRegister.progress = progress.toInt()
         }
 
 
     }
 
     private fun validate(): Boolean {
+        if (imageUri == null) {
+            Toast.makeText(this, "No image selected", Toast.LENGTH_LONG).show()
+            return false
+        }
+
         name = editTextName.text.toString()
         if (name == "") {
             Toast.makeText(this, "Name invalid", Toast.LENGTH_LONG).show()
@@ -177,7 +177,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun uploadUser() {
 
-        if(!validate()) return
+        if (!validate()) return
 
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             Log.d("debug", "firebase user complete")
@@ -245,7 +245,9 @@ class RegisterActivity : AppCompatActivity() {
         var intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        startActivityForResult(intent,
+            PICK_IMAGE_REQUEST
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

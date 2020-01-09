@@ -10,7 +10,7 @@ import android.os.Parcelable
 
 class Job(
     val id:String,
-    val companyName:String,
+    val companyId:String,
     var jobTitle:String,
     var minSalary:Int,
     var maxSalary:Int,
@@ -18,8 +18,7 @@ class Job(
     var requirement:String,
     var tags:List<String>,
     val date_create: Long =  System.currentTimeMillis(),
-    var language:List<String>,
-    val imageUrl:String = ""
+    var language:List<String>
 ):Parcelable{
 
 
@@ -33,12 +32,11 @@ class Job(
         parcel.readString()!!,
         parcel.createStringArrayList()!!,
         parcel.readLong(),
-        parcel.createStringArrayList()!!,
-        parcel.readString()!!
+        parcel.createStringArrayList()!!
     ) {
     }
 
-    constructor():this("","","",0,0,"","", listOf(),System.currentTimeMillis(), listOf(),""){
+    constructor():this("","","",0,0,"","", listOf(),System.currentTimeMillis(), listOf()){
 
     }
 
@@ -54,7 +52,7 @@ class Job(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
-        parcel.writeString(companyName)
+        parcel.writeString(companyId)
         parcel.writeString(jobTitle)
         parcel.writeInt(minSalary)
         parcel.writeInt(maxSalary)
@@ -62,7 +60,6 @@ class Job(
         parcel.writeString(requirement)
         parcel.writeStringList(tags)
         parcel.writeLong(date_create)
-        parcel.writeString(imageUrl)
         parcel.writeStringList(language)
     }
 
