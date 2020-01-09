@@ -1,19 +1,19 @@
 package com.example.tarucjob2u
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import com.google.firebase.database.*
-
 import android.widget.Toast
-
-
-
+import com.example.tarucjob2u.ui.home.LatestJobFragment
+import com.example.tarucjob2u.ui.home.PostedJobsFragment
+import com.example.tarucjob2u.ui.post_job.job_category
 import kotlinx.android.synthetic.main.activity_edit_job.*
-
-
-
 import com.google.android.material.snackbar.Snackbar
-
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class EditJobActivity : AppCompatActivity() {
@@ -67,6 +67,23 @@ class EditJobActivity : AppCompatActivity() {
 
         buttonPost.setOnClickListener {
             postJob()
+
+//            Timer().schedule(2000) {
+//                val intent = Intent(this, MainActivity::class.java)
+//                finish()
+//                overridePendingTransition(0, 0)
+//                startActivity(intent)
+//                overridePendingTransition(0, 0)
+//
+//            }
+
+            Handler().postDelayed({
+                val intent = Intent(this, MainActivity::class.java)
+                finish()
+                overridePendingTransition(0, 0)
+                startActivity(intent)
+                overridePendingTransition(0, 0)
+            }, 3000)
         }
 
     }
