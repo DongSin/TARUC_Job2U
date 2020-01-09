@@ -60,14 +60,14 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/cbSoftware"
+                    android:id="@+id/checkBoxSoftware"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:text="@string/cat_software" />
 
                 <CheckBox
-                    android:id="@+id/cbSales"
+                    android:id="@+id/checkBoxSales"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -78,13 +78,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/cbFoodBeverage"
+                    android:id="@+id/checkBoxFnB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_food_beverage" />
 
                 <CheckBox
-                    android:id="@+id/cbOther"
+                    android:id="@+id/checkBoxNetwork"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -94,13 +94,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/cb_account"
+                    android:id="@+id/checkBoxAccount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_account" />
 
                 <CheckBox
-                    android:id="@+id/cb_engineering"
+                    android:id="@+id/checkBoxEngineering"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_engineering" />
@@ -109,13 +109,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/cb_cust_service"
+                    android:id="@+id/checkBoxCustomerService"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_customer_service" />
 
                 <CheckBox
-                    android:id="@+id/cb_warehouse"
+                    android:id="@+id/checkBoxWarehouse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_warehouse" />
@@ -124,13 +124,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/cb_security"
+                    android:id="@+id/checkBoxSecurity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_security" />
 
                 <CheckBox
-                    android:id="@+id/cbOffice"
+                    android:id="@+id/checkBoxOffice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_office" />
@@ -160,10 +160,10 @@
 
 
             <RadioButton
-                android:id="@+id/radioButtonNoPreference"
+                android:id="@+id/radioButtonPreferNoGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/gender_no_preference"
+                android:text="@string/prefer_not_to_mention"
                 app:layout_constraintStart_toEndOf="@+id/textViewGender"
                 app:layout_constraintTop_toTopOf="@+id/textViewGender" />
 
@@ -172,16 +172,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/gender_male"
-                app:layout_constraintStart_toStartOf="@+id/radioButtonNoPreference"
-                app:layout_constraintTop_toBottomOf="@+id/radioButtonNoPreference" />
+                android:text="@string/male"
+                app:layout_constraintStart_toStartOf="@+id/radioButtonPreferNoGender"
+                app:layout_constraintTop_toBottomOf="@+id/radioButtonPreferNoGender" />
 
             <RadioButton
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/gender_female"
+                android:text="@string/female"
                 app:layout_constraintStart_toStartOf="@+id/radioButtonMale"
                 app:layout_constraintTop_toBottomOf="@+id/radioButtonMale" />
         </RadioGroup>
@@ -209,41 +209,34 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/cb_lang_no_limit"
+                    android:id="@+id/checkBoxMalay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/language_no_limit" />
+                    android:text="@string/malay" />
 
                 <CheckBox
-                    android:id="@+id/cb_lang_eng"
+                    android:id="@+id/checkBoxEnglish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/language_english" />
+                    android:text="@string/english" />
             </TableRow>
 
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/cb_lang_tamil"
+                    android:id="@+id/checkBoxTamil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/language_tamil" />
+                    android:text="@string/tamil" />
 
                 <CheckBox
-                    android:id="@+id/cb_lang_mandarin"
+                    android:id="@+id/checkBoxChinese"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/language_mandarin" />
+                    android:text="@string/chinese" />
             </TableRow>
 
-            <TableRow>
 
-                <CheckBox
-                    android:id="@+id/cb_lang_bm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/language_bm" />
-            </TableRow>
         </TableLayout>
 
         <TextView
@@ -316,7 +309,7 @@
             app:layout_constraintTop_toTopOf="@+id/textViewMaxSalary" />
 
         <Button
-            android:id="@+id/buttonUpload"
+            android:id="@+id/buttonPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -327,7 +320,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextMaxSalary" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
