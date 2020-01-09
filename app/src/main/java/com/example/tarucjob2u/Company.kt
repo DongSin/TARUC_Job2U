@@ -2,6 +2,11 @@ package com.example.tarucjob2u
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Company(
     val id:String,
@@ -11,7 +16,6 @@ class Company(
     var phone:String,
     var email:String,
     val password:String,
-    var jobs:List<Job> = listOf(),
     val imageUri:String
 ):Parcelable {
     constructor(parcel: Parcel) : this(
@@ -22,22 +26,21 @@ class Company(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.createTypedArrayList(Job)!!,
         parcel.readString()!!
     ) {
     }
 
-    constructor():this("","","","","","","", listOf<Job>(),""){
+    constructor():this("","","","","","","",""){
 
     }
 
-    fun setDetails(name: String, address: String, description: String, phone: String, email: String, jobs: List<Job>){
+    fun setDetails(name: String, address: String, description: String, phone: String, email: String){
         this.name = name
         this.address = address
         this.description = description
         this.phone = phone
         this.email = email
-        this.jobs = jobs
+
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -48,12 +51,44 @@ class Company(
         parcel.writeString(phone)
         parcel.writeString(email)
         parcel.writeString(password)
-        parcel.writeTypedList(jobs)
         parcel.writeString(imageUri)
     }
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    fun getJobs(): List<Job> {
+        var jobList = mutableListOf<Job>()
+
+        val jobRef = FirebaseDatabase.getInstance().getReference("Jobs")
+        jobRef.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    for (i:DataSnapshot in p0.children){
+                        val job = i.getValue(Job::class.java)
+                        if(job!!.companyId == id) jobList.add(job!!)
+                    }
+                }
+            }
+
+        })
+
+        return jobList
+    }
+
+    fun getJobs(list:List<Job>): List<Job> {
+        var jobList = mutableListOf<Job>()
+
+        for(job in list){
+            if(job.companyId == id) jobList.add(job)
+        }
+
+        return jobList.toList()
     }
 
     companion object CREATOR : Parcelable.Creator<Company> {

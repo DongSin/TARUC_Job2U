@@ -115,7 +115,6 @@ class RegisterCompanyActivity : AppCompatActivity() {
             phone,
             email,
             password,
-            listOf(),
             downloadUri
         )
         companyRef.child(id).setValue(newCompany).addOnSuccessListener {

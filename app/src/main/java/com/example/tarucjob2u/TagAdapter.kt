@@ -11,7 +11,6 @@ class TagAdapter internal constructor(context: Context):RecyclerView.Adapter<Tag
 
     private val inflater:LayoutInflater = LayoutInflater.from(context)
     private var tagList = emptyList<String>()
-    private val mContext = context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagViewHolder {
         val itemView = inflater.inflate(R.layout.tag_record,parent,false)
