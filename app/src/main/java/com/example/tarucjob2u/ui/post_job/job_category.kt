@@ -1,10 +1,13 @@
 package com.example.tarucjob2u.ui.post_job
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tarucjob2u.Job
+import com.example.tarucjob2u.MainActivity
 import com.example.tarucjob2u.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -31,7 +34,16 @@ class job_category : AppCompatActivity() {
 
         buttonPost.setOnClickListener {
             postJob()
+
+            Handler().postDelayed({
+                val intent = Intent(this, MainActivity::class.java)
+                finish()
+                overridePendingTransition(0, 0)
+                startActivity(intent)
+                overridePendingTransition(0, 0)
+            }, 3000)
         }
+
 
         buttonCancel.setOnClickListener {
             super.onBackPressed();
@@ -149,6 +161,8 @@ class job_category : AppCompatActivity() {
                     finish()
                 }.show()
         }
+
+
 
 
 
