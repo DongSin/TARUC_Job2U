@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.activity_edit_job.*
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.example.tarucjob2u.ui.home.PostedJobsFragment
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_edit_user.*
 
 
 class EditJobActivity : AppCompatActivity() {
@@ -45,26 +48,26 @@ class EditJobActivity : AppCompatActivity() {
 
         getIncomingIntent()
 
-        editTextJobPosition.setText(job.jobTitle)
-        editTextRequirement.setText(job.requirement)
-        editTextMinSalary.setText((job.minSalary.toString()))
-        editTextMaxSalary.setText((job.maxSalary.toString()))
+        updateTextJobPosition.setText(job.jobTitle)
+        updateTextRequirement.setText(job.requirement)
+        updateTextMinSalary.setText((job.minSalary.toString()))
+        updateTextMaxSalary.setText((job.maxSalary.toString()))
 
-        if (job.language.contains("English")) checkBoxEnglish.isChecked = true
-        if (job.language.contains("Tamil")) checkBoxTamil.isChecked = true
-        if (job.language.contains("Malay")) checkBoxMalay.isChecked = true
-        if (job.language.contains("Chinese")) checkBoxChinese.isChecked = true
+        if (job.language.contains("English")) updateCheckBoxEnglish.isChecked = true
+        if (job.language.contains("Tamil")) updateCheckBoxTamil.isChecked = true
+        if (job.language.contains("Malay")) updateCheckBoxMalay.isChecked = true
+        if (job.language.contains("Chinese")) updateCheckBoxChinese.isChecked = true
 
-        if (job.tags.contains("Food & Beverage")) checkBoxFnB.isChecked = true
-        if (job.tags.contains("Software")) checkBoxSoftware.isChecked = true
-        if (job.tags.contains("Sales")) checkBoxSales.isChecked = true
-        if (job.tags.contains("Network")) checkBoxNetwork.isChecked = true
-        if (job.tags.contains("Account")) checkBoxAccount.isChecked = true
-        if (job.tags.contains("Engineering")) checkBoxEngineering.isChecked = true
-        if (job.tags.contains("Customer Service")) checkBoxCustomerService.isChecked = true
-        if (job.tags.contains("Warehouse")) checkBoxWarehouse.isChecked = true
-        if (job.tags.contains("Security")) checkBoxSecurity.isChecked = true
-        if (job.tags.contains("Office")) checkBoxOffice.isChecked = true
+        if (job.tags.contains("Food & Beverage")) updateCheckBoxFnB.isChecked = true
+        if (job.tags.contains("Software")) updateCheckBoxSoftware.isChecked = true
+        if (job.tags.contains("Sales")) updateCheckBoxSales.isChecked = true
+        if (job.tags.contains("Network")) updateCheckBoxNetwork.isChecked = true
+        if (job.tags.contains("Account")) updateCheckBoxAccount.isChecked = true
+        if (job.tags.contains("Engineering")) updateCheckBoxEngineering.isChecked = true
+        if (job.tags.contains("Customer Service")) updateCheckBoxCustomerService.isChecked = true
+        if (job.tags.contains("Warehouse")) updateCheckBoxWarehouse.isChecked = true
+        if (job.tags.contains("Security")) updateCheckBoxSecurity.isChecked = true
+        if (job.tags.contains("Office")) updateCheckBoxOffice.isChecked = true
 
         if (job.gender.contains("Prefer not to mention")) radioButtonPreferNoGender.isChecked = true
         if (job.gender.contains("Male")) radioButtonMale.isChecked = true
@@ -81,23 +84,23 @@ class EditJobActivity : AppCompatActivity() {
     }
 
     private fun validateJob(): Boolean {
-        jobPosition = editTextJobPosition.text.toString().trim()
+        jobPosition = updateTextJobPosition.text.toString().trim()
         if (jobPosition.isEmpty()) {
             Toast.makeText(applicationContext, "Job position is required.", Toast.LENGTH_LONG)
                 .show()
             return false
         }
 
-        if (checkBoxSales.isChecked) category.add("Sales")
-        if (checkBoxOffice.isChecked) category.add("Office")
-        if (checkBoxFnB.isChecked) category.add("Food & Beverage")
-        if (checkBoxSoftware.isChecked) category.add("Software")
-        if (checkBoxNetwork.isChecked) category.add("Network")
-        if (checkBoxAccount.isChecked) category.add("Account")
-        if (checkBoxEngineering.isChecked) category.add("Engineering")
-        if (checkBoxCustomerService.isChecked) category.add("Customer service")
-        if (checkBoxWarehouse.isChecked) category.add("Warehouse")
-        if (checkBoxSecurity.isChecked) category.add("Security")
+        if (updateCheckBoxSales.isChecked) category.add("Sales")
+        if (updateCheckBoxOffice.isChecked) category.add("Office")
+        if (updateCheckBoxFnB.isChecked) category.add("Food & Beverage")
+        if (updateCheckBoxSoftware.isChecked) category.add("Software")
+        if (updateCheckBoxNetwork.isChecked) category.add("Network")
+        if (updateCheckBoxAccount.isChecked) category.add("Account")
+        if (updateCheckBoxEngineering.isChecked) category.add("Engineering")
+        if (updateCheckBoxCustomerService.isChecked) category.add("Customer Service")
+        if (updateCheckBoxWarehouse.isChecked) category.add("Warehouse")
+        if (updateCheckBoxSecurity.isChecked) category.add("Security")
         if (category.size == 0) {
             Toast.makeText(this, "Category invalid", Toast.LENGTH_LONG).show()
             return false
@@ -113,29 +116,29 @@ class EditJobActivity : AppCompatActivity() {
             }
         }
 
-        if (checkBoxEnglish.isChecked) language.add("English")
-        if (checkBoxChinese.isChecked) language.add("Chinese")
-        if (checkBoxMalay.isChecked) language.add("Malay")
-        if (checkBoxTamil.isChecked) language.add("Tamil")
+        if (updateCheckBoxEnglish.isChecked) language.add("English")
+        if (updateCheckBoxChinese.isChecked) language.add("Chinese")
+        if (updateCheckBoxMalay.isChecked) language.add("Malay")
+        if (updateCheckBoxTamil.isChecked) language.add("Tamil")
         if (language.size == 0) {
             Toast.makeText(this, "Language invalid", Toast.LENGTH_LONG).show()
             return false
         }
-        requirement = editTextRequirement.text.toString().trim()
+        requirement = updateTextRequirement.text.toString().trim()
         if (requirement.isEmpty()) {
             Toast.makeText(applicationContext, "Requirement is required.", Toast.LENGTH_LONG)
                 .show()
             return false
         }
 
-        minSalary = editTextMinSalary.text.toString()
+        minSalary = updateTextMinSalary.text.toString()
         if (minSalary.isEmpty()) {
             Toast.makeText(applicationContext, "Minimum Salary is required.", Toast.LENGTH_LONG)
                 .show()
             return false
         }
 
-        maxSalary = editTextMaxSalary.text.toString()
+        maxSalary = updateTextMaxSalary.text.toString()
         if (maxSalary.isEmpty()) {
             Toast.makeText(applicationContext, "Maximum Salary is required.", Toast.LENGTH_LONG)
                 .show()
@@ -159,17 +162,25 @@ class EditJobActivity : AppCompatActivity() {
     private fun postJob() {
         if (!validateJob()) return
 
-        val id = firebaseAuth.currentUser!!.uid
-        val ref = FirebaseDatabase.getInstance().getReference("Jobs").child(id)
+
+        val ref = FirebaseDatabase.getInstance().getReference("Jobs").child(job.id)
 
         ref.child("gender").setValue(gender)
         ref.child("tags").setValue(category)
         ref.child("language").setValue(language)
         ref.child("jobTitle").setValue(jobPosition)
-        ref.child("maxSalary").setValue(maxSalary)
-        ref.child("minSalary").setValue(minSalary)
+        ref.child("maxSalary").setValue(maxSalary.toInt())
+        ref.child("minSalary").setValue(minSalary.toInt())
         ref.child("requirement").setValue(requirement)
 
+        Snackbar.make(
+            scrollEdit,
+            "Update completed",
+            Snackbar.LENGTH_LONG
+        )
+            .setAction("Back") {
+                finish()
+            }.show()
     }
 
 

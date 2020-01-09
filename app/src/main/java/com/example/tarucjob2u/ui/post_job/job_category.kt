@@ -55,7 +55,7 @@ class job_category : AppCompatActivity() {
         if (checkBoxNetwork.isChecked) category.add("Network")
         if (checkBoxAccount.isChecked) category.add("Account")
         if (checkBoxEngineering.isChecked) category.add("Engineering")
-        if (checkBoxCustomerService.isChecked) category.add("Customer service")
+        if (checkBoxCustomerService.isChecked) category.add("Customer Service")
         if (checkBoxWarehouse.isChecked) category.add("Warehouse")
         if (checkBoxSecurity.isChecked) category.add("Security")
         if (category.size == 0) {
