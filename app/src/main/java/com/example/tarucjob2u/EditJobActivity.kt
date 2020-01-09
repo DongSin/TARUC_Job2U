@@ -1,43 +1,83 @@
-package com.example.tarucjob2u.ui.post_job
+package com.example.tarucjob2u
 
-import android.os.Bundle
-import android.view.View
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.tarucjob2u.Job
-import com.example.tarucjob2u.R
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import android.os.Bundle
+import com.google.firebase.database.*
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.Toast
+import com.example.tarucjob2u.ui.post_job.job_category
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.post_job.*
 
-class job_category : AppCompatActivity() {
+import android.widget.TextView
+
+import android.R.drawable.edit_text
+
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_edit_job.*
+
+
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+class EditJobActivity : AppCompatActivity() {
+
+    private lateinit var job: Job
+    private lateinit var company: Company
 
     private lateinit var jobPosition: String
     private lateinit var requirement: String
     private lateinit var minSalary: String
     private lateinit var maxSalary: String
     private lateinit var gender: String
+    private val firebaseAuth = FirebaseAuth.getInstance()
 
     var language = mutableListOf<String>()
     var category = mutableListOf<String>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.post_job)
+        setContentView(R.layout.activity_edit_job)
 
+        getIncomingIntent()
+
+        editTextJobPosition.setText(job.jobTitle)
+        editTextRequirement.setText(job.requirement)
+        editTextMinSalary.setText((job.minSalary.toString()))
+        editTextMaxSalary.setText((job.maxSalary.toString()))
+
+        if (job.language.contains("English")) checkBoxEnglish.isChecked = true
+        if (job.language.contains("Tamil")) checkBoxTamil.isChecked = true
+        if (job.language.contains("Malay")) checkBoxMalay.isChecked = true
+        if (job.language.contains("Chinese")) checkBoxChinese.isChecked = true
+
+        if (job.tags.contains("Food & Beverage")) checkBoxFnB.isChecked = true
+        if (job.tags.contains("Software")) checkBoxSoftware.isChecked = true
+        if (job.tags.contains("Sales")) checkBoxSales.isChecked = true
+        if (job.tags.contains("Network")) checkBoxNetwork.isChecked = true
+        if (job.tags.contains("Account")) checkBoxAccount.isChecked = true
+        if (job.tags.contains("Engineering")) checkBoxEngineering.isChecked = true
+        if (job.tags.contains("Customer Service")) checkBoxCustomerService.isChecked = true
+        if (job.tags.contains("Warehouse")) checkBoxWarehouse.isChecked = true
+        if (job.tags.contains("Security")) checkBoxSecurity.isChecked = true
+        if (job.tags.contains("Office")) checkBoxOffice.isChecked = true
+
+        if (job.gender.contains("Prefer not to mention")) radioButtonPreferNoGender.isChecked = true
+        if (job.gender.contains("Male")) radioButtonMale.isChecked = true
+        if (job.gender.contains("Female")) radioButtonFemale.isChecked = true
+
+        buttonCancel.setOnClickListener {
+            super.onBackPressed();
+        }
 
         buttonPost.setOnClickListener {
             postJob()
         }
 
-        buttonCancel.setOnClickListener {
-            super.onBackPressed();
-        }
     }
 
     private fun validateJob(): Boolean {
@@ -117,34 +157,33 @@ class job_category : AppCompatActivity() {
     }
 
     private fun postJob() {
-
         if (!validateJob()) return
 
-        val user = FirebaseAuth.getInstance().currentUser
+        val id = firebaseAuth.currentUser!!.uid
+        val ref = FirebaseDatabase.getInstance().getReference("Jobs").child(id)
 
-        val date_create: Long = System.currentTimeMillis()
-
-        val ref = FirebaseDatabase.getInstance().getReference("Jobs")
-
-        val postJobId = ref.push().key
-
-        val newPostJob = Job(
-            postJobId!!,
-            user!!.uid,
-            jobPosition,
-            minSalary.toInt(),
-            maxSalary.toInt(),
-            gender,
-            requirement,
-            category,
-            date_create,
-            language
-
-        )
-
-        ref.child(postJobId).setValue(newPostJob).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Job post successfully", Toast.LENGTH_LONG).show()
-        }
+        ref.child("gender").setValue(gender)
+        ref.child("tags").setValue(category)
+        ref.child("language").setValue(language)
+        ref.child("jobTitle").setValue(jobPosition)
+        ref.child("maxSalary").setValue(maxSalary)
+        ref.child("minSalary").setValue(minSalary)
+        ref.child("requirement").setValue(requirement)
 
     }
+
+
+    private fun getIncomingIntent() {
+        if (intent.hasExtra("job")) {
+
+            job = intent.getParcelableExtra<Job>("job")
+            company = intent.getParcelableExtra<Company>("company")
+
+        } else {
+
+            finish()
+        }
+    }
+
+
 }

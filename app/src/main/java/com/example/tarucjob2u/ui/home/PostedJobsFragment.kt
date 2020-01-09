@@ -9,10 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tarucjob2u.Company
-import com.example.tarucjob2u.Global
-import com.example.tarucjob2u.JobAdapter
-import com.example.tarucjob2u.R
+import com.example.tarucjob2u.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -39,7 +36,7 @@ class PostedJobsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         company = Global.loginCompany!!
-        val jobAdapter = JobAdapter(requireContext())
+        val jobAdapter = PostedJobAdapter(requireContext())
         recyclerViewPostedJob.adapter = jobAdapter
         recyclerViewPostedJob.layoutManager = LinearLayoutManager(requireContext())
 
