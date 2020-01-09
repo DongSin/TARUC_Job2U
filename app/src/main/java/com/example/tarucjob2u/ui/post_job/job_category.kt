@@ -32,8 +32,11 @@ class job_category : AppCompatActivity() {
 
 
         buttonPost.setOnClickListener {
-
             postJob()
+        }
+
+        buttonCancel.setOnClickListener{
+            super.onBackPressed();
         }
     }
 
@@ -143,7 +146,7 @@ class job_category : AppCompatActivity() {
         )
 
         ref.child(postJobId).setValue(newPostJob).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Save successfully", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Job post successfully", Toast.LENGTH_LONG).show()
         }
 
     }
