@@ -97,6 +97,7 @@ class job_category : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("Jobs")
 
         val postJobId = ref.push().key
+
         val newPostJob = Post_job(
             postJobId!!,
             jobPosition,
