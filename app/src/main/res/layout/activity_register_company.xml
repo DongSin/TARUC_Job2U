@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ConstraintLayoutRegister"
+    android:id="@+id/ConstraintLayoutRegisterCompany"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".ui.profile.RegisterActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -108,6 +108,14 @@
                 android:background="@color/colorAccent"
                 android:text="@string/register"
                 android:textColor="@android:color/white" />
+
+            <ProgressBar
+                android:id="@+id/progressBarRegisterCompany"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp" />
 
             <TextView
                 android:id="@+id/textViewGoLoginFromCompany"

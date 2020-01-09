@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tarucjob2u.R
 import com.example.tarucjob2u.ui.post_job.job_category
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment:Fragment() {
@@ -25,6 +26,13 @@ class ProfileFragment:Fragment() {
         button.setOnClickListener{
             var intent = Intent(requireContext(), job_category::class.java)
             startActivity(intent)
+        }
+
+        button2.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 }
