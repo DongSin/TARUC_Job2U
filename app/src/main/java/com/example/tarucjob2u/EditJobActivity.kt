@@ -1,30 +1,19 @@
 package com.example.tarucjob2u
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import com.google.firebase.database.*
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.Toast
-import com.example.tarucjob2u.ui.post_job.job_category
-import kotlinx.android.synthetic.main.activity_main.*
-
-import android.widget.TextView
-
-import android.R.drawable.edit_text
-
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_edit_job.*
-
-
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.example.tarucjob2u.ui.home.LatestJobFragment
 import com.example.tarucjob2u.ui.home.PostedJobsFragment
+import com.example.tarucjob2u.ui.post_job.job_category
+import kotlinx.android.synthetic.main.activity_edit_job.*
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_edit_user.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class EditJobActivity : AppCompatActivity() {
@@ -37,10 +26,9 @@ class EditJobActivity : AppCompatActivity() {
     private lateinit var minSalary: String
     private lateinit var maxSalary: String
     private lateinit var gender: String
-    private val firebaseAuth = FirebaseAuth.getInstance()
 
-    var language = mutableListOf<String>()
-    var category = mutableListOf<String>()
+    private var language = mutableListOf<String>()
+    private var category = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,6 +67,23 @@ class EditJobActivity : AppCompatActivity() {
 
         buttonPost.setOnClickListener {
             postJob()
+
+//            Timer().schedule(2000) {
+//                val intent = Intent(this, MainActivity::class.java)
+//                finish()
+//                overridePendingTransition(0, 0)
+//                startActivity(intent)
+//                overridePendingTransition(0, 0)
+//
+//            }
+
+            Handler().postDelayed({
+                val intent = Intent(this, MainActivity::class.java)
+                finish()
+                overridePendingTransition(0, 0)
+                startActivity(intent)
+                overridePendingTransition(0, 0)
+            }, 3000)
         }
 
     }

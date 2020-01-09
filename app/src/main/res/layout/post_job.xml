@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollPost"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextJobPosition"
+            android:id="@+id/createEditTextJobPosition"
             android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -46,7 +47,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/post_category"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextJobPosition" />
+            app:layout_constraintTop_toBottomOf="@+id/createEditTextJobPosition" />
 
         <TableLayout
             android:id="@+id/tableLayoutCategory"
@@ -60,14 +61,14 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/checkBoxSoftware"
+                    android:id="@+id/createCheckBoxSoftware"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:text="@string/cat_software" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxSales"
+                    android:id="@+id/createCheckBoxSales"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -78,13 +79,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/checkBoxFnB"
+                    android:id="@+id/createCheckBoxFnB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_food_beverage" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxNetwork"
+                    android:id="@+id/createCheckBoxNetwork"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -94,13 +95,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/checkBoxAccount"
+                    android:id="@+id/createCheckBoxAccount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_account" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxEngineering"
+                    android:id="@+id/createCheckBoxEngineering"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_engineering" />
@@ -109,13 +110,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/checkBoxCustomerService"
+                    android:id="@+id/createCheckBoxCustomerService"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_customer_service" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxWarehouse"
+                    android:id="@+id/createCheckBoxWarehouse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_warehouse" />
@@ -124,13 +125,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/checkBoxSecurity"
+                    android:id="@+id/createCheckBoxSecurity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_security" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxOffice"
+                    android:id="@+id/createCheckBoxOffice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_office" />
@@ -209,13 +210,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/checkBoxMalay"
+                    android:id="@+id/createCheckBoxMalay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/malay" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxEnglish"
+                    android:id="@+id/createCheckBoxEnglish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/english" />
@@ -224,13 +225,13 @@
             <TableRow>
 
                 <CheckBox
-                    android:id="@+id/checkBoxTamil"
+                    android:id="@+id/createCheckBoxTamil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tamil" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxChinese"
+                    android:id="@+id/createCheckBoxChinese"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chinese" />
@@ -251,7 +252,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tableLayoutLanguage" />
 
         <EditText
-            android:id="@+id/editTextRequirement"
+            android:id="@+id/createEditTextRequirement"
             android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -273,10 +274,10 @@
             android:layout_marginTop="16dp"
             android:text="@string/minimum_salary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextRequirement" />
+            app:layout_constraintTop_toBottomOf="@+id/createEditTextRequirement" />
 
         <EditText
-            android:id="@+id/editTextMinSalary"
+            android:id="@+id/createEditTextMinSalary"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -295,10 +296,10 @@
             android:layout_marginTop="16dp"
             android:text="@string/maximum_salary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextMinSalary" />
+            app:layout_constraintTop_toBottomOf="@+id/createEditTextMinSalary" />
 
         <EditText
-            android:id="@+id/editTextMaxSalary"
+            android:id="@+id/createEditTextMaxSalary"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
@@ -317,7 +318,7 @@
             android:layout_marginRight="48dp"
             android:text="@string/post_job"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextMaxSalary" />
+            app:layout_constraintTop_toBottomOf="@+id/createEditTextMaxSalary" />
 
         <Button
             android:id="@+id/buttonCancel"
@@ -328,7 +329,7 @@
             android:layout_marginTop="16dp"
             android:text="@android:string/cancel"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextMaxSalary" />
+            app:layout_constraintTop_toBottomOf="@+id/createEditTextMaxSalary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
