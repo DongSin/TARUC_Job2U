@@ -53,8 +53,8 @@ class JobTypeReportFragment:Fragment() {
     private var warehouse = TagClass("warehouse",0)
     private var office = TagClass("office",0)
     private var tag = mutableListOf<TagClass>(software,food,account,customerService,security,sales,network,engineering,warehouse,office)
-    private lateinit var jobViewModel:JobViewModel
-    private lateinit var jobList:List<Job>
+        private lateinit var jobViewModel:JobViewModel
+        private lateinit var jobList:List<Job>
 
 
 
