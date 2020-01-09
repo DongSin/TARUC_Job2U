@@ -79,7 +79,7 @@ class SpecialFragment : Fragment() {
 
 
     private fun filterList(list: MutableList<Job>?, interestList: List<String>): List<Job> {
-        //todo filter the list based on user interest
+
         var resultList = mutableListOf<Job>()
         for (job in list!!) {
             for (interest in interestList) {
