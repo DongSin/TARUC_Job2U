@@ -122,6 +122,7 @@ class ProfessionFragment : Fragment() {
             jobViewList[i].setText(pro.tag)
             noViewList[i].setText(pro.num.toString())
             i++
+            if(i==5)break
         }
     }
 
