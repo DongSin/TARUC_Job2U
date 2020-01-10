@@ -53,34 +53,42 @@ class HighPaidJobFragment : Fragment() {
                 jobList.sortedByDescending { it.maxSalary }
 
                 val barChartHighPaid = view!!.findViewById<BarChart>(R.id.barChartHighPaid)
-                val barDataSet = BarDataSet(data(), "")
+                val barDataSet = BarDataSet(data(), "Salary")
                 barDataSet.setColors(ColorTemplate.createColors(ColorTemplate.COLORFUL_COLORS))
                 barChartHighPaid.getDescription().setEnabled(false)
                 val barData = BarData(barDataSet)
                 barChartHighPaid.data = barData
 
+                val names = arrayOf("test1","test2","test3","test4","test5")
+                val xAxis: XAxis = barChartHighPaid.xAxis
+                val formater = XaxisValue(names)
+                xAxis.valueFormatter = formater
+                xAxis.position = XAxis.XAxisPosition.BOTTOM
+                xAxis.granularity = 1f
+                xAxis.setCenterAxisLabels(true)
+
                 barChartHighPaid.invalidate()
 
-                val companyNames = mutableListOf<String>()
-                for (job in jobList) {
-                    FirebaseDatabase.getInstance().getReference("Companies").child(job.companyId)
-                        .child("name").addValueEventListener(object : ValueEventListener {
-                            override fun onCancelled(p0: DatabaseError) {
-
-                            }
-
-                            override fun onDataChange(p0: DataSnapshot) {
-                                companyNames.add(p0.getValue(String::class.java)!!)
-                                val xAxis: XAxis = barChartHighPaid.xAxis
-                                val formater: ValueFormatter = XaxisValue(companyNames) as ValueFormatter
-                                xAxis.setValueFormatter(formater)
-                                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
-                                xAxis.granularity=1f
-                                xAxis.setCenterAxisLabels(true)
-                            }
-
-                        })
-                }
+//                val companyNames = mutableListOf<String>()
+//                for (job in jobList) {
+//                    FirebaseDatabase.getInstance().getReference("Companies").child(job.companyId)
+//                        .child("name").addValueEventListener(object : ValueEventListener {
+//                            override fun onCancelled(p0: DatabaseError) {
+//
+//                            }
+//
+//                            override fun onDataChange(p0: DataSnapshot) {
+//                                companyNames.add(p0.getValue(String::class.java)!!)
+//                                val xAxis: XAxis = barChartHighPaid.xAxis
+//                                val formater = XaxisValue(companyNames)
+//                                xAxis.valueFormatter = formater
+//                                xAxis.position = XAxis.XAxisPosition.BOTTOM
+//                                xAxis.granularity=1f
+//                                xAxis.setCenterAxisLabels(true)
+//                            }
+//
+//                        })
+//                }
 
             }
 
@@ -94,8 +102,8 @@ class HighPaidJobFragment : Fragment() {
     }
 
     inner class XaxisValue(
-        val mValue: List<String>
-    ) : ValueFormatter() {
+        val mValue: Array<String>
+    ) : IAxisValueFormatter , ValueFormatter() {
 
         override fun getFormattedValue(value: Float, axis: AxisBase?): String {
             return mValue[value.toInt()]
@@ -103,8 +111,8 @@ class HighPaidJobFragment : Fragment() {
 
     }
 
-    private fun data(): ArrayList<BarEntry> {
-        val datavalue: ArrayList<BarEntry> = ArrayList<BarEntry>()
+    private fun data(): MutableList<BarEntry> {
+        val datavalue = mutableListOf<BarEntry>()
 
         datavalue.add(BarEntry(1f, jobList[0].maxSalary.toFloat()))
         datavalue.add(BarEntry(2f, jobList[1].maxSalary.toFloat()))
