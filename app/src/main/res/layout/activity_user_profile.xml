@@ -13,7 +13,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
 
             <ImageView
                 android:id="@+id/imageViewUserProfile"
@@ -130,8 +131,6 @@
                 tools:listitem="@layout/tag_record">
 
             </androidx.recyclerview.widget.RecyclerView>
-
-
 
 
             <TextView

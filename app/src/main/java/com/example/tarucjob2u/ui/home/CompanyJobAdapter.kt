@@ -1,4 +1,4 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tarucjob2u.ui.home.JobDetailActivity
+import com.example.tarucjob2u.Company
+import com.example.tarucjob2u.Job
+import com.example.tarucjob2u.R
 
 class CompanyJobAdapter internal constructor(context:Context):RecyclerView.Adapter<CompanyJobAdapter.CompanyJobViewHolder>() {
 
     private val inflater:LayoutInflater = LayoutInflater.from(context)
     private var jobList = emptyList<Job>()
-    private lateinit var company:Company
+    private lateinit var company: Company
     private val mContext = context
 
 
@@ -42,7 +44,7 @@ class CompanyJobAdapter internal constructor(context:Context):RecyclerView.Adapt
         notifyDataSetChanged()
     }
 
-    fun setCompany(company:Company){
+    fun setCompany(company: Company){
         this.company = company
     }
 

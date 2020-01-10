@@ -1,14 +1,15 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.home
 
 import android.content.Context
 import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tarucjob2u.Company
+import com.example.tarucjob2u.R
 import com.squareup.picasso.Picasso
 
 class CompanyAdapter internal constructor(context: Context):
@@ -40,7 +41,7 @@ RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder>(){
 
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(mContext,CompanyActivity::class.java)
+            val intent = Intent(mContext, CompanyActivity::class.java)
             intent.putExtra("company",company)
             mContext.startActivity(intent)
         }
