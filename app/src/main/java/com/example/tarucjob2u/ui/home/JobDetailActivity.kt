@@ -6,14 +6,12 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tarucjob2u.Company
 import com.example.tarucjob2u.Job
 import com.example.tarucjob2u.R
-import com.example.tarucjob2u.TagAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_job__detail_.*
 import java.text.SimpleDateFormat

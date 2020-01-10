@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tarucjob2u.*
+import com.example.tarucjob2u.ui.home.CompanyActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -35,23 +35,27 @@ class ProfileFragment:Fragment() {
 
         buttonViewProfile.setOnClickListener {
             if(Global.loginCompany != null){
-                val intent = Intent(requireContext(),CompanyActivity::class.java)
+                val intent = Intent(requireContext(),
+                    CompanyActivity::class.java)
                 intent.putExtra("company",Global.loginCompany)
 
                 startActivity(intent)
             }else{
-                val intent = Intent(requireContext(),UserProfileActivity::class.java)
+                val intent = Intent(requireContext(),
+                    UserProfileActivity::class.java)
                 startActivity(intent)
             }
         }
 
         buttonEditProfile.setOnClickListener {
             if(Global.loginCompany != null){
-                val intent = Intent(requireContext(),EditCompanyActivity::class.java)
+                val intent = Intent(requireContext(),
+                    EditCompanyActivity::class.java)
 
                 startActivity(intent)
             }else{
-                val intent = Intent(requireContext(),EditUserActivity::class.java)
+                val intent = Intent(requireContext(),
+                    EditUserActivity::class.java)
 
                 startActivity(intent)
             }

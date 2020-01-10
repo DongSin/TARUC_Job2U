@@ -1,4 +1,4 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.home
 
 import android.Manifest
 import android.content.Intent
@@ -12,14 +12,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tarucjob2u.ui.home.JobViewModel
+import com.example.tarucjob2u.Company
+import com.example.tarucjob2u.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_company.*
-import kotlinx.android.synthetic.main.company_record.*
 
 class CompanyActivity : AppCompatActivity() {
 
-    private lateinit var company:Company
+    private lateinit var company: Company
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

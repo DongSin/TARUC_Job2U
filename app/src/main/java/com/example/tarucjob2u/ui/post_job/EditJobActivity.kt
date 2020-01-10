@@ -1,19 +1,17 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.post_job
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.google.firebase.database.*
 import android.widget.Toast
-import com.example.tarucjob2u.ui.home.LatestJobFragment
-import com.example.tarucjob2u.ui.home.PostedJobsFragment
-import com.example.tarucjob2u.ui.post_job.job_category
+import com.example.tarucjob2u.Company
+import com.example.tarucjob2u.Job
+import com.example.tarucjob2u.MainActivity
+import com.example.tarucjob2u.R
 import kotlinx.android.synthetic.main.activity_edit_job.*
 import com.google.android.material.snackbar.Snackbar
-import java.util.*
-import kotlin.concurrent.schedule
 
 
 class EditJobActivity : AppCompatActivity() {

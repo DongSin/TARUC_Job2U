@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tarucjob2u.Job
-import com.example.tarucjob2u.JobAdapter
 import com.example.tarucjob2u.R
 import com.example.tarucjob2u.User
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +17,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_special.*
 
 class SpecialFragment : Fragment() {

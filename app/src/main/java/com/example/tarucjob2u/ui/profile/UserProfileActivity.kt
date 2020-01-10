@@ -1,9 +1,11 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.tarucjob2u.Global
+import com.example.tarucjob2u.R
+import com.example.tarucjob2u.ui.home.TagAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_user_profile.*
 

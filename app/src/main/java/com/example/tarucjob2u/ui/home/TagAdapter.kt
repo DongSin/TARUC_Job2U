@@ -1,4 +1,4 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tarucjob2u.R
 
 class TagAdapter internal constructor(context: Context):RecyclerView.Adapter<TagAdapter.TagViewHolder>() {
 

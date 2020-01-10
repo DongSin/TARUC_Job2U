@@ -1,4 +1,4 @@
-package com.example.tarucjob2u
+package com.example.tarucjob2u.ui.profile
 
 import android.app.Activity
 import android.content.Context
@@ -7,23 +7,19 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Patterns
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.core.text.isDigitsOnly
-import androidx.core.view.PointerIconCompat
-import com.example.tarucjob2u.ui.profile.LoginActivity
-import com.example.tarucjob2u.ui.profile.ProfileFragment
-import com.example.tarucjob2u.ui.profile.RegisterCompanyActivity
+import com.example.tarucjob2u.Global
+import com.example.tarucjob2u.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_edit_company.*
-import kotlinx.android.synthetic.main.activity_register_company.*
 
 class EditCompanyActivity : AppCompatActivity() {
 
